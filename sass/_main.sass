@@ -1,0 +1,602 @@
+// Normally mainpage styles
+ //vars 
++font(PT Sans, PTS55F)
++font(icomoon, icomoon)
+
++font(PT Sans Bold,PTC75F)
+$red: #cf473b
+
+$blue: blue
+$btn-c: #d9363c
+$square-c: #f26d7d
+$dark: #1abc9c
+$grey: #ebebeb
+=fontBold
+	font-family: 'PT Sans Bold', sans-serif 
+body
+	font-family: 'PT Sans', sans-serif 
+	font-size: 14px 
+	background: #FFF
+
+// extends
+
+=justify
+	text-align: justify
+	line-height: 0
+	font-size: 1px
+	text-justify: newspaper
+	zoom: 1
+	text-align-last: justify
+	&:after
+		content: ""
+		display: inline-block
+		width: 100%
+		height: 0px
+		visibility: hidden
+		overflow: hidden
+=justify-child
+	display: inline-block
+	line-height: normal
+	vertical-align: top
+	font-size: 14px
+
+=vcenter
+	&:before
+		content: ""
+		display: inline-block
+		width: 0
+		height: 100%
+		vertical-align: middle 
+
+// pages style		
+.wrapper
+	position: relative
+	top: 0
+	right: 0
+	height: 100%
+	width: 100%
+	&.has-blur
+		+blur(3px)
+	+r(w1300)
+		//overflow: hidden
+		-webkit-perspective: 1500px
+		perspective: 1500px
+		-webkit-perspective-origin: 0% 50%
+		perspective-origin: 0% 50%	
+			  			 
+.header-wrap
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	height: 100px
+	z-index: 1000
+	background: rgba($red,.7)
+	box-shadow: none
+	+r(w1300)
+		width: 180px
+		height: auto 
+		bottom: 0
+		
+		left: 100%
+		
+		background: rgba(black,.5)
+		+box-shadow(-5px 0px 10px rgba(112,122,120,.2))
+		+transition(all 0.5s)
+		visibility: hidden
+		+transform(translateX(-180px) rotateY(90deg))
+		-webkit-transform-origin: 100% 50%
+		transform-origin: 100% 50%
+		-webkit-transform-style: preserve-3d
+		transform-style: preserve-3d
+		&.is-open
+			+r(w1300)
+				visibility: visible
+				+transition(transform 0.5s)
+				+transform(translateX(-180px) rotateY(0deg))
+	+r(w320)
+		height: auto 
+		
+		left: 100%
+		width: 320px
+		+transform(translate3d(-320px, 0, 0) rotateY(90deg))
+		&.is-open
+			+transform(translate3d(-320px, 0, 0) rotateY(0deg))					
+.header
+	position: absolute
+	top: 0
+	left: 0
+	right: 0 
+	height: 100px
+	+clr
+	padding: 0 68px 
+	
+	z-index: 999
+	// &.is-fixed
+	// 	position: fixed
+	// 	+box-shadow(0 2px 10px rgba(112,122,112,.1))
+	&__close
+		visibility: hidden
+		position: absolute
+		top: 24px
+		right: 20px
+		+s(menu-btn)
+		cursor: pointer
+		z-index: 2
+	 
+
+	+r(w1300)
+		height: auto
+		position: absolute
+		padding: 0	
+		.header__close
+			visibility: visible			  	
+.logo
+	float: left
+	height: 100px
+	+vcenter 
+	a
+		display: inline-block
+		vertical-align: middle
+		+s(logo)
+	+r(w1300)
+		display: none
+		
+.menu-btn
+	display: none
+	position: fixed
+	top: 0
+	right: 0
+	width: 100px
+	height: 100px
+	background: rgba($red,.7)
+	+tr(opacity 200ms)
+	z-index: 100
+	&:before
+		content: ""
+		position: absolute
+		top: 50%
+		right: 50%
+		margin: -10.5px -10.5px 0 0
+		+s(menu-btn)
+	&:after
+		position: absolute
+		content: ""
+		top: 0
+		right: 0
+		width: 100%
+		height: 100%
+		background: rgba(0,0,0,0.2)
+		opacity: 0
+		+transition(opacity 0.5s linear)
+		z-index: -1		
+	&.is-active
+		opacity: 0
+		z-index: 0
+	 		
+	+r(w1300)
+		display: block	 
+.menu
+	float: right
+	text-align: center
+	padding: 43px 0
+	ul
+		display: inline-block
+		margin-left: 0
+
+		li
+			display: inline-block
+			vertical-align: middle
+			a
+				position: relative
+				display: block
+				text-transform: uppercase
+				margin: 0 13px 
+				text-decoration: none
+				color: #fff
+				+fontBold
+				+gpu
+				&:after
+					content: ""
+					position: absolute
+					top: 100%
+					left: 0
+					width: 100%
+					background: #fff
+					opacity: 0
+					+transition(all 0.3s)
+					+transform(translateY(-8px))
+					+box-shadow(0 2px 10px rgba(120,122,129,.5))
+				&:hover
+					&:after
+						height: 2px
+						opacity: 1
+						+transform(translateY(3px))
+				&.is-active
+					&:after
+						height: 2px
+						opacity: 1
+						+transform(translateY(3px))		
+	+r(w1300)
+		float: none
+		padding: 100px 0 0 12px
+		text-align: left
+		ul
+			display: block
+			padding: 0 30px 
+			li
+				display: block
+				a
+					display: inline-block
+					height: 45px
+					line-height: 45px
+					
+					&:hover
+						&:after
+							+transform(translateY(-4px))
+					&.is-active
+						&:after
+							+transform(translateY(-4px))
+	+r(w320)
+		ul
+			li
+				margin-bottom: 5px
+				a
+					font-size: 15px
+.main
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100vh
+	min-height: 1px
+.img-wrap
+	position: relative
+	overflow: hidden
+	max-height: 560px
+	height: 100vh
+	.img-wrap__bg
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		+cover
+		img
+			width: 100%
+			height: auto
+			vertical-align: middle
+.about
+	display: block
+	margin-top: 75px
+	width: 100%
+	height: auto
+
+	+box-shadow(0px 1px 0px  rgb(224,224,224))
+	+box-shadow(0px -1px 0px  rgb(224,224,224))
+
+	.title-wrap
+		display: block
+
+		margin: 0 auto
+
+		height: 70px
+		width: 300px
+		background: white
+		+transform(translateY(-50%))
+
+		.title
+			text-align: center
+			vertical-align: middle
+			line-height: 70px
+	.circul-wrap
+		height: auto//357px
+		width: 75.7%
+		margin: 0 auto 0
+		//overflow: hidden
+		line-height: 0px
+		+justify
+		+r(w900)
+			margin: 0 7% 0 
+			width: 86%
+		.item__circul
+			position: relative
+			width: 205px
+			height: 205px
+			border-radius: 50% 
+			margin-top: 100px
+			+justify-child
+			&:after
+				position: absolute
+				top: 124%
+				text-transform: uppercase
+				+fontBold
+				font-size: 14px
+				color: #000
+
+			&:nth-child(1)
+				background : rgb(242,109,125)
+				&:after
+					content: "Simple"
+					left: 38%
+
+			&:nth-child(2)
+				background : rgb(124,39,62)
+				&:after
+					content: "But"
+					left: 44%
+			&:nth-child(3)
+				background : rgb(207,71,59)
+				&:after
+					content: "Beautiful"
+					left: 33%
+
+	button
+		display: block
+		margin: 155px auto 91px
+		width: 258px
+		height: 82px
+		border-radius: 5px
+		+fontBold
+		font-size: 16px
+		color: #fff
+		text-decoration: none
+		text-transform: uppercase
+		+linear-gradient($btn-c,darken($btn-c,20%))
+		+box-shadow(0px 1px 5px  rgba(90,90,90,.4))
+		&:hover
+			+linear-gradient(darken($btn-c,10%),darken($btn-c,40%))
+			+box-shadow(0px 2px 7px  rgba(90,90,90,.7))
+
+.last
+	display: block
+	margin-top: 75px
+	width: 100%
+	height: auto
+
+	+box-shadow(0px 1px 0px  rgb(224,224,224))
+	+box-shadow(0px -1px 0px  rgb(224,224,224))
+
+
+	.invisible1,
+	.invisible2,
+	.invisible3
+		.title-wrap
+			display:inline-block
+			margin: 0 auto
+
+			height: 70px
+			width: 300px
+			background: white
+			+transform(translateY(-50%))
+
+			.title
+				text-align: center
+				vertical-align: middle
+				line-height: 70px
+				text-transform: uppercase
+	.invisible1
+		display: none
+		.square-wrap
+			height: auto//357px
+			width: 87%
+			margin: 58px auto 50px
+			//overflow: hidden
+
+			line-height: 0px
+			+justify
+			+r(w900)
+				margin: 95px 7% 0 
+				width: 86%
+			.item__square
+				+justify-child
+				position: relative
+				width: 170px
+				height: 170px
+				margin: 8px
+				background: $square-c
+				
+				background-size: cover !important
+	.invisible2
+		display: none
+		.wrapper
+			+justify
+			display: inline-block
+
+		.event-wrap
+			+justify-child
+			box-sizing: border-box
+			padding: 5.1%
+			margin-top: -70px 
+			width: 49.9%
+			overflow: hidden
+			+r(w800)
+
+				display: block
+				width: 100%
+				margin: 0 auto 
+				padding-bottom: 0
+				padding: 5.1%
+			.event__title
+				+fontBold
+				+r(w800)
+					text-align: center
+			.event__disc
+				padding-top: 20px
+		.square-wrap
+			+justify-child
+			box-sizing: border-box
+			height: auto//357px
+			width: 49.9%
+			padding: 5.1%
+			display: inline-block
+			margin-top: -70px 
+			line-height: 0px
+			+r(w800)
+
+				display: block
+				width: 508px
+				margin: 0 auto 7%
+				padding: 0
+			.item__square
+	
+				position: relative
+				max-width: 508px
+				height: 342px
+	
+				background: $square-c
+				
+				background-size: cover !important
+				+r(w800)
+					display: block
+					width: 100%
+					margin: 0 auto
+	.invisible3
+		display: block
+		.list-wrap
+			+justify
+			display: inline-block
+			box-sizing: border-box
+			width: 100%
+			margin-top: -30px 
+			
+			overflow: hidden
+			+r(w800)
+
+
+			.left
+				display: block
+				box-sizing: border-box
+				+justify-child
+				width: 49.9%
+				padding-bottom: 0
+				margin: 0 auto
+				+r(w800)
+					width: 80%
+					display: block
+					margin: 0 auto 
+					padding: 5.1%
+					padding-bottom: 0
+					
+
+				
+			.right
+				display: block
+				box-sizing: border-box
+				+justify-child
+				width: 49.9%
+				margin: 0 auto
+				+r(w800)
+					width: 80%
+					display: block
+					margin: 0 auto 
+					padding: 5.1%
+					padding-top: 0
+
+			.list__item
+				display: block
+				box-sizing: border-box
+				padding: 8%
+				margin: 0 auto
+				max-width: 470px
+				font-size: 18px
+				text-decoration: none
+				letter-spacing: 1px
+				+r(w800)
+					padding: 4%
+
+
+
+.footer	
+	height: auto
+	width: 100%
+	overflow:hidden
+	background: $grey
+	.center
+		margin: 0 auto
+	.menu-footer
+
+		overflow: hidden
+		margin: 0 auto
+		width: 80%
+
+		height: 98px
+		.footer-menu__item
+		
+			a
+	
+				display: inline-block
+				vertical-align: middle
+				line-height: 98px
+				position: relative
+				text-transform: uppercase
+				margin: 0 13px 
+				text-decoration: none
+				color: rgb(95,95,95)
+				+fontBold
+				+gpu
+				&:after
+					content: ""
+					position: absolute
+					top: 100%
+					left: 0
+					width: 100%
+					background: rgb(95,95,95)
+					opacity: 0
+					+transition(all 0.3s)
+					+transform(translateY(-8px))
+					+box-shadow(0 2px 10px rgba(95,95,95,.5))
+				&:hover
+					&:after
+						height: 2px
+						opacity: 1
+						+transform(translateY(3px))
+				&.is-active
+					&:after
+						height: 2px
+						opacity: 1
+						+transform(translateY(3px))		
+
+	.slick-controls
+		position: relative
+		display: inline-block
+	.slick-prev,
+	.slick-next
+		position: absolute
+		top: 50%
+		margin-top: -14px
+		+hide-text
+		width: 36px
+		height: 36px
+		border-radius: 50%
+		background: none
+		+transition(background 200ms, opacity 200ms)
+		+gpu
+		z-index: 2
+		&:hover
+			opacity: 1
+			background: none
+		&:focus
+			outline: none	
+
+		.products__menu &
+			background: transparent	
+	.slick-prev
+		left: 32px
+		font-family: icomoon
+		&:before
+			content: "\e602"
+			display: inline-block
+			vertical-align: middle
+			font-size: 12px
+			color: #fff
+	 
+	.slick-next
+		right: 32px
+		font-family: icomoon
+		&:before
+			content: "\e603"
+			display: inline-block
+			vertical-align: middle
+			font-size: 12px
+			color: #fff
